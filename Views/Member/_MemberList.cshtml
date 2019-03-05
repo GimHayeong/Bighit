@@ -1,0 +1,136 @@
+﻿@model IEnumerable<BigHitEntatinment.Models.MemberViewModel>
+
+@{
+    string[] borderColors = { "border-red", "border-green", "border-blue", "border-yellow" };
+}
+
+@*Bootstrap 4 반영(2019.03.04)*@
+
+@if (Model.Count() == 0)
+{
+    @Html.Raw("<div class='row'>")
+}
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    var model = Model.ElementAt(i);
+
+    var col = i % 4;
+    if (col == 0)
+    { @Html.Raw("<div class='row'>") }
+
+    <div class="col-lg-3 order-sm-6  album-list">
+        <ul>
+            <li>
+                <img src="@Url.Content(model.ImageUrl)" class="img-thumbnail-circle img-circle" />
+                <div class="clearfix"></div>
+            </li>
+
+            <li class="list-main-title">
+                <div class="category-title">
+                    <h4>@Url.Content(model.StageName)</h4>
+                    <hr class="@borderColors[col]" style="min-width: 100px;" />
+                </div>
+            </li>
+
+            <li class="list-sub-title">
+                @if (model.Role != null)
+                {@Url.Content(model.Role)}
+            </li>
+
+            <li class="list-item">
+                본명: @Url.Content(model.Name)
+            </li>
+
+            <li class="list-item">
+                생년월일: @Url.Content(model.BirtyDay.ToString("yyyy-MM-dd"))
+            </li>
+
+            <li class="list-item">
+                키: @Url.Content(model.Height.ToString()) cm
+            </li>
+
+            <li class="list-item">
+                몸무게: @Url.Content(model.Weight.ToString()) kg
+            </li>
+
+        </ul>
+    </div>
+    if (col == 3)
+    { @Html.Raw("</div><div class='clearfix'></div>") }
+}
+
+@if ((Model.Count() - 1) % 4 < 3)
+{
+    @Html.Raw("</div><div class='clearfix'></div>")
+}
+
+<!--@*
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Artist.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirtyDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artist.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageUrl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirtyDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+*@-->

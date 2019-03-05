@@ -1,0 +1,253 @@
+﻿
+@{
+    ViewBag.Title = "View";
+}
+
+@section header{
+    <style>
+        /* Dropdown Button */
+        .dropbtn { background-color: #858eba;color: white;padding: 6px 16px;font-size: 16px;border: none; border-radius: 5px;}
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {position: relative;display: inline-block;}
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {display: none;position: absolute;background-color: #f1f1f1;min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;}
+
+        /* Links inside the dropdown */
+        .dropdown-content a {color: black;padding: 2px 6px;text-decoration: none;display: block;}
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #ddd;}
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {display: block;}
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+        .vdo-frame-border {max-width: 600px; max-height: 350px;}
+    </style>
+}
+
+<h2>Music Video</h2>
+
+<div>
+    <h3><span id="vdoTitle" name="vdoTitle">FAKE LOVE</span></h3>
+    
+    <div class="dropdown" id="vodContainer" name="vodContainer">
+        <button class="dropbtn">Select</button>
+        <div class="dropdown-content" id="vodDropdownList" name="vodDropdownList">
+        </div>
+    </div>
+    @*<div class="dropdown" id="vodContainer" name="vodContainer">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            Select
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" id="vodDropdownList" name="vodDropdownList">
+        </ul>
+    </div>*@
+    <div class="row">
+        <div class="col-md-6 vdo-frame-border">
+            <div id="player"></div>
+        </div>
+
+        <div class="col-md-5 btn-group-sm" id="vodButtonPlayList" name="vodButtonPlayList" style="padding: 10px;">
+            @*<a class="btn btn-default btn-group-xs" href="javascript:setPlayer(0)">DNA</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(1)">불타오르네</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(2)">쩔어</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(3)">피땀눈물</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(4)">DROP</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(5)">Save ME</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(6)">Not Today</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(7)">상남자</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(8)">봄날</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(9)">FAKE LOVE</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(10)">I NEED U</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(11)">호르몬 전쟁</a>
+            <a class="btn btn-default btn-group-xs" href="javascript:setPlayer(12)">Danger</a>*@
+        </div>
+    </div>  
+    <div class="clearfix" />
+
+    <div class="row">
+        <div class="col-md-4 col-lg-offset-0" id="piechart" name="piechart" style="margin-left: -100px;"></div>
+    </div>
+
+
+
+        @*<div class="row">
+    <div class="col-md-4 vdo-frame-border">
+        <fieldset>
+            <legend>FAKE LOVE</legend>
+            <div class="vdo-youtube"><iframe id="iframe_0" name="iframe_0" width="300" height="200" src="https://www.youtube.com/embed/7C2z4GqqS5E?rel=0&enablejsapi=1" frameborder="0" allowfullscreen="true"></iframe></div>
+        </fieldset>
+    </div>
+    </div>*@
+
+    </div>
+
+
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        // Load google charts
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        var dataTable = [
+                ['DNA', 645015152, 'MBdVXkSdhwU'],
+                ['불타오르네', 54233024, 'ALj5MKjy2BU'],
+                ['FAKE LOVE', 454833153, '7C2z4GqqS5E'],
+                ['DROP', 437587714, 'i0aTFraTUdo'],
+                ['쩔어', 430573358, 'GbmTLAa29l8'],
+                ['피땀눈물', 412784025, 'hmE9f-TEutc'],
+                ['IDOL', 372553102, 'pBuZEGYXA6E&feature'],
+                ['Save ME', 347999211, 'GZjt_sA2eso'],
+                ['Not Today', 297888825, '9DwzBICPhdM'],
+                ['상남자', 275215670, 'm8MfJg68oCs'],
+                ['봄날', 234166123, 'xEeFrLSkMm8'],
+                ['호르몬 전쟁', 178595232, 'XQmpVHUi-0A'],
+                ['I NEED U', 166895272, 'NMdTd9e-LEI'],
+                ['Danger', 122522888, 'bagj78IQ3l0']
+        ];
+
+        // Draw the chart and set the chart values
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'title');
+            data.addColumn('number', 'viewer');
+            data.addColumn('string', 'vdo')
+            data.addRows(dataTable);
+
+            // Optional; add a title and set the width and height of the chart , colors:[]
+            var options = { legend: 'right', title: 'YouTube View (2019.02.17기준)', width:550, height: 500, is3D: 'true'};
+
+            // Display the chart inside the <div> element with id="piechart"
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+
+            google.visualization.events.addListener(chart, 'select', function () {
+                var selection = chart.getSelection();
+                if (selection.length) {
+                    var selectedData = chart.getSelection();
+                    var row = selectedData[0].row;
+                    var vod = data.getValue(row, 2);
+                    var idx = getSelectedIndexByVodId(vod)
+                    setPlayer(idx);
+                }
+            });
+        }
+        function getSelectedIndexByVodId(vod) {
+            for (var i = 0; dataTable.length; i++) {
+                if (vod == dataTable[i][2]) { return i;}
+            }
+
+            return selectedIndex;
+        }
+
+        
+        // [YoutubePlayer] This code loads the IFrame Player API code asynchronously.
+        var tag = document.createElement('script');
+
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        // [YoutubePlayer] This function creates an <iframe> (and YouTube player)
+        //                 after the API code downloads.
+        var player;
+        var selectedVodId = "7C2z4GqqS5E";
+        var selectedIndex = 9;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '100%',
+                width: '100%',
+                videoId: selectedVodId,
+                playerVars: {autoplay: 0, controls: 1},
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        var aryPlayList = [];
+        // [YoutubePlayer]player.loadVideoById(selectedVodId, 0);
+        function setPlayer(idx) {
+            if (selectedIndex == idx) { return; }
+
+            selectedVodId = dataTable[idx][2];
+            selectedIndex = idx;
+            stopVideo();
+            document.getElementById("vdoTitle").textContent = dataTable[idx][0];
+            setPlayList(idx);
+        }
+
+        // [YoutubePlayer] The API will call this function when the video player is ready.
+        function onPlayerReady(event) {
+            event.target.playVideo();
+            if (aryPlayList && aryPlayList.length == 0) {
+                for (var i = 0; i < dataTable.length; i++) {
+                    aryPlayList[i] = dataTable[i][2];
+                }
+            }
+            setPlayList(selectedIndex);
+            setVodItemList(selectedIndex);
+        }
+
+        function setPlayList(idx) {
+            player.loadPlaylist({
+                playlist: aryPlayList,
+                listType: 'playlist',
+                index: idx,
+                startSeconds: 0,
+                suggestedQuality: 'small'
+            });
+        }
+
+        // [YoutubePlayer] The API calls this function when the player's state changes.
+        //                 The function indicates that when playing a video (state=1),
+        //                 the player should play for six seconds and then stop.
+        var done = false;
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PLAYING && !done) {
+                setTimeout(stopVideo, 6000);
+                done = true;
+            }
+        }
+        function stopVideo() {
+            player.seekTo(0, true);
+            player.stopVideo();
+        }
+        function pauseVideo() {
+            player.pauseVideo();
+        }
+
+        function setVodItemList(idx) {
+            var ddnlist = document.getElementById('vodDropdownList');
+            var btnList = document.getElementById('vodButtonPlayList');
+
+            for (var i = 0; i < dataTable.length; i++) {
+                var idx = getSelectedIndexByVodId(dataTable[i][2]);
+                var lnk = document.createElement("a");
+                lnk.textContent = dataTable[i][0];
+                lnk.className = "btn btn-secondary";
+                lnk.style="margin: 5px;"
+                lnk.href = "javascript:setPlayer(" + idx + ")";
+                btnList.append(lnk);
+
+                var a = document.createElement("a");
+                a.textContent = dataTable[i][0];
+                a.href = "javascript:setPlayer(" + idx + ")";
+                ddnlist.appendChild(a);
+            }
+        }
+    </script>
+}

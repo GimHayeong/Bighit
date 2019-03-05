@@ -1,0 +1,52 @@
+﻿@model BigHitEntatinment.Models.ArtistViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>정보 삭제</h2>
+
+<h3>아티스트 정보</h3>
+<div>
+    <p>(삭제한 아티스트 정보는 복구할 수 없으니, 확인 후 삭제하세요.)</p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DebutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DebutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Back to List", "Index", "", htmlAttributes: new { @class = "btn btn-light btn-sm" })
+            <div class="admin-tooltip" style="margin-left: 1em;">
+                <input type="submit" value="Delete" class="btn btn-outline-danger" disabled="disabled" title="submit" />
+                <span class="admin-tooltiptext">관리자 로그인 필요</span>
+            </div>
+        </div>
+    }
+</div>

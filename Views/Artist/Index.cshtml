@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BigHitEntatinment.Models.ArtistViewModel>
+
+@{
+        ViewBag.Title = "Index";
+
+        var items = new List<SelectListItem>() {
+            new SelectListItem { Text = "전체", Value = "ALL" },
+            new SelectListItem { Text = "이름", Value = "Name" },
+            new SelectListItem { Text = "설명", Value = "Desc" }
+        };
+}
+
+<h2>아티스트 목록</h2>
+<p style="text-align:right">
+    @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-dark" })
+</p>
+
+
+@*<form style="float: left;">
+    <div class="col-md-3">
+        @Html.DropDownList("searchKey", items, htmlAttributes: new { @class = "form-control", @style="min-width: 80px;" })
+    </div>
+    <div class="col-md-6">
+        <input class="form-control" type="text" name="searchString" />
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-info" type="submit">검색</button>
+    </div> 
+</form>*@
+
+
+@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "post", InsertionMode = InsertionMode.Replace, UpdateTargetId = "listSection", OnSuccess = "SuccessSearch(data)" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-md-6 form-inline" style="margin-bottom: 10px;">
+        @Html.DropDownList("searchKey", items, htmlAttributes: new { @class = "form-control", @style = "max-width: 80px; margin-left: -10px; float:left;" })
+        <input class="form-control" type="text" name="searchString" style="max-width: 150px; float: left; margin: 0px 5px;" />
+        <button class="btn btn-info" type="submit" style="max-width: 50px; float: left;" title="검색"><i class="fa fa-search"></i></button>
+    </div>
+}
+
+
+@*<div class="row visible-lg visible-md" style="padding:10px 0px; margin: 2px;">
+    <div class="col-md-1" style="min-width:100px;">@Html.DisplayNameFor(model => model.Name)</div>
+    <div class="col-md-1">@Html.DisplayNameFor(model => model.DebutDate)</div>
+    <div class="clearfix visible-xs"></div>
+    <div class="col-xs-0 col-md-8">@Html.DisplayNameFor(model => model.Description)</div>
+    <div class="col-md-2" style="min-width:200px;"></div>
+</div>*@
+
+<div class="clearfix"></div>
+
+<div name="listSection" id="listSection">
+    @foreach (var item in Model)
+    {
+        <div class="row" style="border:1px solid gray; border-left:6px solid gray; border-radius:5px; padding:10px 0px; margin: 2px;">
+            <div class="col-md-1" style="min-width:120px;">@Html.DisplayFor(modelItem => item.Name)</div>
+            <div class="col-md-1 d-inline-block" style="min-width:150px;">@Html.DisplayFor(modelItem => item.DebutDate)<span class="d-lg-inline-flex d-none d-lg-block d-md-block"> 데뷔</span></div>
+            <div class="clearfix d-lg-none d-md-none"></div>
+            <div class="col-xs-0 col-md-8" style="overflow:hidden; white-space: nowrap; text-overflow:ellipsis;">@Html.DisplayFor(modelItem => item.Description)</div>
+            <div class="col-md-1 btn-group" style="width:180px; padding-right:0px;">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm" })
+            </div>
+        </div>
+    }
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        function SuccessSearch(data) {
+            var $divs = $("#listSection").find(".row").find("div");
+            $divs.eq(0).attr("style", "min-width: 120px;");
+            $divs.eq(1).attr("style", "min-width: 150px;");
+            $divs.last().addClass("col-md-1 btn-group").attr("style", "width:180px; padding-right:0px;");
+            var $btns = $("#listSection").find("a");
+            $btns.addClass("btn btn-secondary btn-sm");
+        }
+    </script>
+}

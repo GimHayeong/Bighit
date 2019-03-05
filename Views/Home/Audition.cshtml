@@ -1,0 +1,265 @@
+﻿
+@{
+    ViewBag.Title = "AUDITION";
+}
+
+@section header{
+    <style>
+         .map_wrap {position:relative;overflow:hidden;width:100%;height:350px;max-width:100%;min-width:300px;}
+
+        .nav-stricky{/*margin: 0;padding: 0;overflow: hidden;position: -webkit-sticky;position: sticky;top: 0;*/}
+        .nav-tabs li{float: left;}
+        .nav-tabs li:visited {background-color: #ffffff;}
+        .nav-tabs li .active {background-color: #ddd;color: #666;}
+        .tab-content div {background-color: #ffffff;}
+        .tab-content h4 {color: #999;font-style:oblique;margin-bottom: 1.5em;}
+        dt::before{content: "•";padding-right: 8px;color: #808080;}
+        dd {padding-left: 1.5em;margin-bottom: 2em;}
+        .ad-step div{background-color:#f5f5f5;border-radius: 5px;text-align: center;vertical-align: central;border: .1em solid #CCC;padding: 2.5em;height: 12em;}
+        .ad-step-next {color: #ccc;text-align: center;vertical-align: central;height: 12em;padding-top: 3.8em;}
+        .ad-step-next-down {color: #ccc;text-align: center;vertical-align: central;height: 2em;}
+        .ad-step hr {margin-top: 0px;width: 80%;border-width: .12em;border-style: solid; border-color: #d3482b;}
+        .ad-field {margin-top: .7em;}
+        .ad-field .ad-field-content{text-align: center; height: 5em; padding-top:1.3em; margin: 0 .7em;}
+        .ad-field .ad-field-topborder {border-top: .2em solid #333;}
+        .ad-field .ad-field-bottomborder {border-bottom: .1em solid #CCC; }
+    </style>
+}
+
+<h2>@ViewBag.Title</h2>
+
+<br/>
+
+<div class="nav-stricky">
+    <ul class="nav nav-tabs">
+        <li><a data-toggle="tab" href="#menu1" onclick="setMapLocation(37.5516354, 126.91749290000007);" class="nav-link active">HIT IT 6</a></li>
+        <li><a data-toggle="tab" href="#menu2" onclick="setMapLocation(0, 0);" class="nav-link">AUDITION</a></li>
+        <li><a data-toggle="tab" href="#menu3" onclick="setMapLocation(37.512094, 127.03283650000003);" class="nav-link">MONTHLY</a></li>
+    </ul>
+</div>
+
+<div class="tab-content">
+    <div id="menu1" class="tab-pane active">
+        <h3>HIT IT 6</h3>
+        <h4>HIP-HOP GENIUSE를 찾아라!</h4>
+        <dl>
+            <dt>지원자격</dt>
+            <dd>1998년 이후 출생, 남자(국적 제한없음)<br /><small>(해당 모집은 남자그룹이므로 지원자격을 남자로 제한합니다.)</small></dd>
+            <dt>오디션 진행방식</dt>
+            <dd class="row">
+                <div class="col-md-3 ad-step"><div><p>Step1</p><hr />온라인 예선</div></div>
+                <div class="col-md-1 d-none d-lg-block d-md-block ad-step-next">&#8250;</div>
+                <div class="col-md-1 d-lg-none d-md-none ad-step-next-down">↓</div>
+                <div class="col-md-3 ad-step"><div><p>Step2</p><hr />본선</div></div>
+                <div class="col-md-1 d-none d-lg-block d-md-block ad-step-next">&#8250;</div>
+                <div class="col-md-1 d-lg-none d-md-none ad-step-next-down">↓</div>
+                <div class="col-md-3 ad-step" style="min-width: 230px;"><div><p>Step3</p><hr />TOP10결선<br /><small>(최종 우승자 현장발표)</small></div></div>
+                <div class="clearfix"/>
+            </dd>
+            <dt>오디션 일정</dt>
+            <dd>
+                <ol>
+                    <li>온라인 예선 : 2018년 06월 25일 ~ 2018년 07월 25일(E-mail 지원)</li>
+                    <li>본선 : 2018년 08월 05일(일정, 장소 개별통지)</li>
+                    <li>결선 : 2018년 08월 18일 14:00(토)</li>
+                </ol>
+                ※ TOP10 결선 심사위원 :  GROOVYROOM / PRODUCER PDOGG
+            </dd>
+            <dt>지원분야</dt>
+            <dd>
+                <div class="row ad-field">
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder ad-field-bottomborder">랩</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-bottomborder ad-field-topborder d-none d-lg-block">영상 또는 음원 / 지원서 / 정면,전신사진</div><div class="ad-field-content d-lg-none">영상 또는 음원 / 지원서 / 정면,전신사진</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-bottomborder ad-field-topborder d-none d-lg-block">보컬</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">보컬</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-bottomborder ad-field-topborder d-none d-lg-block">영상 또는 음원 / 지원서 / 정면,전신사진</div><div class="ad-field-content ad-field-bottomborder d-lg-none">영상 또는 음원 / 지원서 / 정면,전신사진</div></div>
+                </div>
+                <div class="clearfix"></div>
+                <p style="padding:1em;">(중복 지원 가능)</p>
+            </dd>
+            <dt>온라인 예선 지원방법</dt>
+            <dd class="row">
+                <div class="col-md-3 ad-step"><div><p>지원서 다운로드</p><hr /></div></div>
+                <div class="col-md-1 d-none d-lg-block d-md-block ad-step-next">&#8250;</div>
+                <div class="col-md-1 d-lg-none d-md-none ad-step-next-down">↓</div>
+                <div class="col-md-3 ad-step" style="min-width: 230px;"><div><p>첨부파일 접수</p><hr /><small>(지원서, 사진, 영상 또는 음원)</small><br /><a href="mailto:hititaudition@ibighit.com" title="hititaudition@ibighit.com"><i class="fa fa-envelope"></i></a></div></div>
+                <div class="col-md-1 d-none d-lg-block d-md-block ad-step-next">&#8250;</div>
+                <div class="col-md-1 d-lg-none d-md-none ad-step-next-down">↓</div>
+                <div class="col-md-3 ad-step"><div><p>지원완료</p><hr /></div></div>
+                <div class="clearfix" />
+            </dd>
+            <dt>부상</dt>
+            <dd>상금 200만원(제세공과금 본인 부담)</dd>
+            <dt>주의사항</dt>
+            <dd>
+                <ol>
+                    <li>본 오디션 지원서에는 사실만을 기재하여야 합니다.</li>
+                    <li>자작곡 가산점 부여합니다.</li>
+                    <li>본 오디션은 중복지원이 가능하며, 팀 지원이 가능한 오디션입니다.</li>
+                    <li>팀 지원 시 팀의 대표자가 지원하여 자기소개란에 팀원들의 정보를 필수 기재하여야 합니다.</li>
+                    <li>오디션 지원서에 포함되어 있는 개인 정보 수집에 관한 사항은 반드시 자세히 읽어 보신 후, 날짜 와 서명을 자필로 기입하여 스캔 또는 사진으로 찍어서 첨부하셔야 합니다.</li>
+                    <li>만 14세 미만 참가자의 경우 오디션 지원서에 포함되어 있는 개인 정보 동의서 전체를 자필로 작성하신 후 가족관계를 증명할 수 있는 가족관계증명서 1부 와 법정대리인 신분증 사본을 함께 보내주시기 바랍니다.7) 본 오디션에 입상하더라도 빅히트 연습생으로서의 자격이 주어지지 않을 수 있습니다.</li>
+                </ol>
+            </dd>
+            <dt>최종 우승자 발표</dt>
+            <dd>TOP10 결선 당일 우승자 발표</dd>
+            <dt>오디션 문의메일</dt>
+            <dd><a href="mailto:hititaudition@ibighit.com" title="hititaudition@ibighit.com"><i class="fa fa-envelope"></i></a> hititaudition@ibighit.com</dd>
+            <dt>결선 장소</dt>
+            <dd>프리즘 홀(마포구 서교동 395-152)</dd>
+        </dl>
+    </div>
+    <div id="menu2" class="tab-pane">
+        <h3>AUDITION</h3>
+        <h4>AUDITION INFORMATION</h4>
+        <dl>
+            <dt>지원기간</dt>
+            <dd>상시지원</dd>
+            <dt>지원자격</dt>
+            <dd>남자(나이, 국적 제한없음)<br /><small>(해당 모집은 남자그룹이므로 지원자격을 남자로 제한합니다.)</small></dd>
+            <dt>오디션 진행방식</dt>
+            <dd class="row">
+                <div class="col-md-3 ad-step"><div><p>Step1</p><hr />지원서 다운로드</div></div>
+                <div class="col-md-1 d-none d-lg-block d-md-block ad-step-next">&#8250;</div>
+                <div class="col-md-1 d-lg-none d-md-none ad-step-next-down">↓</div>
+                <div class="col-md-3 ad-step" style="min-width: 230px;"><div><p>Step2</p><hr />첨부파일 접수<br /><small>(지원서, 사진, 영상 또는 음원)</small><br /><a href="mailto:audition@ibighit.com" title="audition@ibighit.com"><i class="fa fa-envelope"></i></a></div></div>
+                <div class="col-md-1 d-none d-lg-block d-md-block ad-step-next">&#8250;</div>
+                <div class="col-md-1 d-lg-none d-md-none ad-step-next-down">↓</div>
+                <div class="col-md-3 ad-step"><div><p>Step3</p><hr />지원완료</div></div>
+                <div class="clearfix" />
+            </dd>
+            <dt>지원분야</dt>
+            <dd>
+                <ul style="list-style-type: circle;">
+                    <li>가수 : 춤, 노래, 랩(영상 또는 음원, 정면사진, 전신사진)</li>
+                    <li>연기자 : 자유연기(정면사진, 전신사진)</li>
+                    <li>모델 : PR영상(정면사진, 전신사진)</li>
+                </ul>
+            </dd>
+            <dt>주의사항</dt>
+            <dd>
+                <ol>
+                    <li>가수 부문 중 한가지 분야 지원도 가능합니다.</li>
+                    <li>곡의 장르 및 영상 or 음원 길이에 관한 제한은 없습니다.</li>
+                    <li>팀 지원은 불가능 합니다.</li>
+                    <li>자작곡 제출 시 가산점이 붙습니다.</li>
+                    <li>온라인 지원시 메일 제목을 반드시 [지원자 이름 / 거주 지역 / 나이 / 성별] 기재 바랍니다.</li>
+                    <li>우편 지원자는 위 자료를 USB 또는 CD에 담아 아래 주소로 보내시면 됩니다.<br/>(서울시 강남구 학동로 30길 5 양진프라자 5F)</li>
+                    <li>오디션 지원서에 포함되어 있는 개인정보수집에 관한 사항은 반드시 자세히 읽어보신 후 날짜와 서명을 자필로 기입하여 스캔 또는 사진으로 찍어서 첨부하셔야 합니다.</li>
+                    <li> 만 14세 미만 참가자의 경우 오디션 지원서에 포함되어 있는 개인정보 동의서 전체를 자필로 작성하신 후 가족관계를 증명할 수 있는 주민등록등본(초본), 가족관계증명서 1부 와 법정대리인 신분증 사본을 함께 보내주시기 바립니다. </li>
+                </ol>
+            </dd>
+            <dt>합격 통보</dt>
+            <dd>합격자에 한하여 지원서에 기재된 연락망으로 2주 이내에 개별 통보합니다.</dd>
+            <dt>오디션 문의메일</dt>
+            <dd><a href="mailto:audition@ibighit.com" title="audition@ibighit.com"><i class="fa fa-envelope"></i></a> audition@ibighit.com</dd>
+        </dl>
+    </div>
+    <div id="menu3" class="tab-pane">
+        <h3>MONTHLY AUDITION</h3>
+        <h4>BIGHIT MONTHLY AUDITION</h4>
+        <dl>
+            <dt>일정</dt>
+            <dd>매월 마지막주 일요일 오후 1시</dd>
+            <dt>자격</dt>
+            <dd>남자(나이, 국적 제한없음)<br /><small>(해당 모집은 남자그룹이므로 지원자격을 남자로 제한합니다.)</small></dd>
+            <dt>접수 및 방법</dt>
+            <dd>
+                <ul style="list-style-type:circle;">
+                    <li>오후 12시 30분부터 현장접수 진행(매월 선착순으로 300명 제한)</li>
+                    <li>오디션 당일 지원서를 작성할 필기도구를 반드시 지참해 주세요.</li>
+                    <li>만 14세미만 지원자의 경우 아래 개인정보 동의서 전체를 자필로 작성하신후, 가족관계를 증명할 수 있는 주민등록등본(초본)이나 가족관계증명서 1부와 법정대리인 신분증 사본을 함께 가져오시길 바랍니다.</li>
+                </ul>
+            </dd>
+            <dt>지원분야</dt>
+            <dd>
+                <div class="row ad-field">
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder d-none d-lg-block">보컬</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">보컬</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-topborder ad-field-topborder d-none d-lg-block">무반주 진행(하이라이트 부분)</div><div class="ad-field-content d-lg-none">무반주 진행(하이라이트 부분)</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder d-none d-lg-block">랩</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">랩</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-topborder ad-field-topborder d-none d-lg-block">MR 사용가능(자작랩 가산점 부여/1분 이내)<br />휴대폰 음원 준비</div><div class="ad-field-content d-lg-none">MR 사용가능(자작랩 가산점 부여/1분 이내)<br />휴대폰 음원 준비</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder d-none d-lg-block">댄스</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">댄스</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-topborder d-none d-lg-block">스트릿댄스, 창작안무 등 ALL장르(1절 분량)<br />휴대폰 음원 준비</div><div class="ad-field-content d-lg-none">스트릿댄스, 창작안무 등 ALL장르(1절 분량)<br />휴대폰 음원 준비</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder d-none d-lg-block">싱어송라이터</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">싱어송라이터</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-topborder d-none d-lg-block">기타 본인소지, 건반 현장 제공 (1분 이내 자작곡)</div><div class="ad-field-content d-lg-none">기타 본인소지, 건반 현장 제공 (1분 이내 자작곡)</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder d-none d-lg-block">비트박스</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">비트박스</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-topborder d-none d-lg-block">자유 형식 ( 1분 이내)</div><div class="ad-field-content d-lg-none">자유 형식 ( 1분 이내)</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-none d-lg-block">연기</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">연기</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-topborder ad-field-topborder ad-field-bottomborder d-none d-lg-block">자유연기, 지정대본 없음 (1분 이내)</div><div class="ad-field-content d-lg-none">자유연기, 지정대본 없음 (1분 이내)</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-none d-lg-block">모델</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">모델</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-none d-lg-block">워킹, 포즈 등</div><div class="ad-field-content ad-field-bottomborder d-lg-none">워킹, 포즈 등</div></div>
+                </div>
+                <!--
+                                    <div class="col-md-2"><div class="ad-field-content ad-field-topborder ad-field-bottomborder">랩</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-bottomborder ad-field-topborder d-none d-lg-block">영상 또는 음원 / 지원서 / 정면,전신사진</div><div class="ad-field-content d-lg-none">영상 또는 음원 / 지원서 / 정면,전신사진</div></div>
+                    <div class="col-md-2"><div class="ad-field-content ad-field-bottomborder ad-field-topborder d-none d-lg-block">보컬</div><div class="ad-field-content ad-field-topborder ad-field-bottomborder d-lg-none">보컬</div></div>
+                    <div class="col-md-4"><div class="ad-field-content ad-field-bottomborder ad-field-topborder d-none d-lg-block">영상 또는 음원 / 지원서 / 정면,전신사진</div><div class="ad-field-content ad-field-bottomborder d-lg-none">영상 또는 음원 / 지원서 / 정면,전신사진</div></div>
+    
+                -->
+                <div class="clearfix"></div>
+                <p style="padding:1em;">(중복 지원 불가 : 한 분야만 지원 가능합니다.)</p>
+            </dd>
+            <dt>합격자 발표</dt>
+            <dd>합격자에 한하여 지원서에 기재된 연락망으로 2주 이내에 개별 통보합니다.</dd>
+            <dt>오디션 장소</dt>
+            <dd>서울 강남구 학동로30길 5, 양진프라자 5F</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="map_wrap">
+    <div id="map" name="map" style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+</div>
+
+
+@section scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea1589d8549cd8a27800b62f15caa2d7"></script>
+    <!-- services 라이브러리 추가
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea1589d8549cd8a27800b62f15caa2d7&libraries=LIBRARY"></script> -->
+    <!-- services 라이브러리 불러오기
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea1589d8549cd8a27800b62f15caa2d7&libraries=services"></script>-->
+    <!-- services와 clusterer, drawing 라이브러리 불러오기-->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ea1589d8549cd8a27800b62f15caa2d7&libraries=services,clusterer,drawing"></script>
+    <script type="text/javascript">
+        createMap();
+        var map;
+        function createMap(){
+            setMapLocation(37.5516354, 126.91749290000007);//37.5175956, 127.02634809999995
+        }
+
+        function setMapLocation(a, b) {
+            if (a == 0 && b == 0) {
+                $('.map_wrap').hide();
+                return;
+            } else {
+                $('.map_wrap').show();
+            }
+            var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+            var options = { //지도를 생성할 때 필요한 기본 옵션
+                center: new daum.maps.LatLng(a, b), //지도의 중심좌표.(참고:http://www.iegate.net/maps/rgeogoogle.php)
+                level: 3 //지도의 레벨(확대, 축소 정도)
+            };
+
+            map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
+            setZoomable(false);
+
+            var maker = new daum.maps.Marker({
+                position: map.getCenter()
+            });
+            maker.setMap(map);
+
+            // 지도타입 컨트롤
+            var mapTypeControl = new daum.maps.MapTypeControl();
+            map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPLEFT);
+
+            // 확대축소 컨트롤
+            var zoomControl = new daum.maps.ZoomControl();
+            map.addControl(zoomControl, daum.maps.ControlPosition.BOTTOMRIGHT);
+        }
+
+        function setZoomable(zoomable) {
+            map.setZoomable(zoomable);
+        }
+    </script>
+}

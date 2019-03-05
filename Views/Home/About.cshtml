@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "BIGHIT ENTERTAINMENT";
+}
+
+@section header{
+    <link href="~/Content/timeline.css" rel="stylesheet" />
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+<div>
+    <i class="fa fa-quote-left fa-3x fa-pull-left fa-border"></i>(주)<strong>빅히트 엔터테인먼트</strong>(Bighit Entertainment Co.,Ltd.)는 대한민국의 연예기획사이다.<br/>
+    1997년부터 2005년까지 JYP 엔터테인먼트에서 수석 작곡가로 활동한, <strong>방시혁</strong>이 JYP를 떠나 <u>2005년 2월 1일</u>에 설립한, 연예·엔터테인먼트 업종의 매니지먼트 대행, 음반 제작, 무역 사업을 하는 중소기업이다.<br/> 
+    초기부터 JYP와는 제휴 관계였고 전략적으로 상당히 가까운 관계이지만, JYP의 하위 레이블인 것은 아님을 유의해야 한다. 초창기 JYP 사장이던 홍승성이 독립해서 세운 큐브엔터테인먼트와 일부 비슷한 부분이 있다. 2012년 쏘스 뮤직과 합작 걸그룹을 제작하기도 했다.<br />
+    바나나걸, 케이윌, 8eight, 임정희, 옴므, 글램, 방탄소년단, 데이비드 오 등의 소속 연예인들을 배출하였다.<br/>
+    2017년 12월 언론 보도에 따르면 방시혁 대표는 방탄소년단의 전 세계적 성공에 힘입어, 빅히트 엔터테인먼트의 상장 가능성을 공개적으로 인정하고, 투자자들과 기업공개(IPO)를 검토하고 있는 것으로 알려졌다.<br/> 
+    2018년 4월 4일 빅히트 엔터테인먼트는 글로벌 게임 업체 넷마블로부터 총 2014억원 규모의 지분 투자를 유치했다고 밝혔다. 넷마블은 빅히트의 지분 25.71%를 확보해 2대 주주로 올라섰다.<i class="fa fa-quote-left fa-rotate-180 fa-border"></i>
+</div>
+<br/>
+<br/>
+<div class="timeline-root">
+    <div class="timeline">
+        <div class="container right">
+            <div class="content">
+                <h3>2013</h3>
+                <p>방탄소년단</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h3>2012</h3>
+                <p>글램</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h3>2011</h3>
+                <p>데이비드 오</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h3>2008</h3>
+                <p>2AM<small>(조권, 이창민, 임슬옹, 정진윤)</small></p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h3>2007</h3>
+                <p>케이윌, <br/>8eight<small>(이현, 주희, 백찬)</small></p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h3>2005</h3>
+                <p>임정희</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h3>2003</h3>
+                <p>바나나걸<small>(가재발, 이현지, 김상미, 남설민, 안수지)</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div id="formSection">
+    <h3>@ViewBag.Message</h3>
+    <form method="post" name="contactForm" id="contactForm">
+        <textarea name="message" maxlength="150" data-bind="value:message, valueUpdate:'input'"></textarea>
+        <input type="submit" value="send"/>
+        <span data-bind="text:charactersRemaining"></span> characters remaining
+    </form>
+    <img src="~/Content/Images/ajax-loader.gif" id="progress" name="progress" style="display: none;"/>
+</div>*@
+
+
+@section scripts{
+    @*<script src="~/Scripts/knockout-3.4.2.js"></script>
+    <script>
+        //
+        function contactViewModel() {
+            var self = this;
+            self.message = ko.observable('');
+            self.charactersRemaining = ko.computed(function () {
+                return 150 - self.message().length;
+            })
+        }
+
+        //
+        ko.applyBindings(new contactViewModel());
+    </script>
+
+    <script>
+        //
+        $('#contactForm').submit(function () {
+            $('#progress').show();
+            $.post('', { message: $('#message').val })
+            .done(function (response) {
+                setTimeout(function () {
+                    $('#formSection').html(response);
+                }, 2000);
+            });
+
+            return false;
+        });
+    </script>*@
+}
+
+
+@*
+    You are using @Request.Browser.Browser, and that's OK! Email us at support@bighit.com if you have any problems. Or send us a tweet @@bighit
+
+
+    @{
+        var amounts = new List<Decimal> { 100, 25.50m, -40, 275.99m };
+
+    }
+
+    <ul>
+        @foreach(decimal amount in amounts)
+        {
+            <li>@formatAmount(amount)</li>
+            <text>티켓예매 계약금입니다.</text>
+            @:예매하시는분의 성명으로 이체바랍니다.
+        }
+    </ul>
+
+
+    @helper formatAmount(decimal amount) {
+        var color = "green";
+        if(amount < 0)
+        {
+            color = "red";
+        }
+        <span style="color: @color">@String.Format("{0:c}", amount)</span>
+    }
+*@

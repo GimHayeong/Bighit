@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="BHAhxRRd-GdHqxPKfJIo2oaolw5vfmt1CoCk4D_QVS0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>@ViewBag.Title - 방탄소년단</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("header", required: false)@*2018.06.01.*@
+</head>
+<body style="margin: 0px; padding: 0px;">
+@*Bootstrap 4 반영(2019.03.04)*@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("BTS", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse" aria-controls=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation" onclick="this.classList.toggle('change');">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a href="@Url.Action("Index", "Home")" class="nav-link"><i class="fa fa-home"></i> 홈</a></li>
+                <li class="nav-item"><a href="@Url.Action("About", "Home")" class="nav-link"><i class="fa fa-info-circle"></i> 소개</a></li>
+                <li class="nav-item"><a href="@Url.Action("Audition", "Home")" class="nav-link"><i class="fa fa-calendar-o"></i> 오디션</a></li>
+                <li class="nav-item"><a href="@Url.Action("Video", "Album")" class="nav-link"><i class="fa fa-youtube"></i> 비디오</a></li>
+                <li class="nav-item"><a href="@Url.Action("Index", "Artist")" class="nav-link"><i class="fa fa-lock"></i> 아티스트</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" id="mnuAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-lock"></i> 관리자 <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="mnuAdmin">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Artist")" class="dropdown-item"><i class="fa fa-unlock"></i> 아티스트</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Album")" class="dropdown-item"><i class="fa fa-lock"></i> 앨범</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Member")" class="dropdown-item"><i class="fa fa-lock"></i> 멤버</a></li>
+                    </ul>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <div class="text-center" style="margin-bottom: 0px;">
+        <hr/>
+        <div class="row">
+            <div class="col-md-4">&copy; @DateTime.Now.Year - 빅히트 엔터테인먼트</div>
+            <div class="col-md-4"><a href="https://www.google.com.sg/maps/place/서울 강남 도산대로16길 13-20" target="_blank">서울 강남 도산대로16길 13-20</a></div>
+            <div class="col-md-*"><a href="tel:02-3456-7890" target="_blank">02-3456-7890</a></div>
+        </div>
+        <div class="row">
+            <button onclick="topFunction()" id="btnGotoTop" name="btnGotoTop" title="Go to top">Top</button>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Scripts.Render("~/Scripts/scrollTop.js")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
